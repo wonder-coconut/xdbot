@@ -18,11 +18,13 @@ def getToken():
 async def on_ready():
     print('logged in as '+str(bot.user))
 
+#testing command
 @bot.command(name = "test")
 async def test(ctx, arg):
     i = int(arg)
     await ctx.channel.send(xdRandom(i))
 
+#programmed consent
 @bot.command(name = "stop")
 async def stop(ctx):
     await bot.close()
@@ -32,12 +34,14 @@ async def on_message(ctx):
     if ctx.author != bot.user:
         words =  ctx.content.lower()
         if words.find('xd') != -1:
-            await ctx.channel.send(f"{xdRandom()}\n{type(words)}")
-        
+            await ctx.channel.send(xdRandom())
+        elif antiHax(words) == True:
+            await ctx.channel.send(xdRandom())
+
     await bot.process_commands(ctx)
 
 
-
+#random output generator
 def xdRandom(i = 0):
     if(i==0):
 
@@ -73,5 +77,14 @@ def xdRandom(i = 0):
         xd = xd.read()
         return xd 
     
+def antiHax(words):
+    if words.find('x') != -1:
+        i = words.find('x')
+        if words[i:].find('d') != -1:
+            return True
+        else:
+            return False
+    else:
+        return False
 
 bot.run (getToken())
