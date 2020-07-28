@@ -27,6 +27,7 @@ async def test(ctx, arg):
 #programmed consent
 @bot.command(name = "stop")
 async def stop(ctx):
+    print("close command detected, killing self :(")
     await bot.close()
 
 @bot.event
