@@ -32,13 +32,18 @@ async def stop(ctx):
 
 @bot.event
 async def on_message(ctx):
+
     if ctx.author != bot.user:
         words =  ctx.content.lower()
         wordlist = words.split(' ')
         if "xd" in wordlist:
             await ctx.channel.send(xdRandom())
-        elif antiHax(words) == True:
+        elif antiHax(words) == 1:
             await ctx.channel.send(xdRandom())
+        elif antiHax(words) == 2:
+            
+            emoji = '<:XD:699673121287962654>'
+            await ctx.add_reaction(emoji)
 
     await bot.process_commands(ctx)
 
@@ -64,7 +69,6 @@ def xdRandom(i = 0):
         return xd
     
 def antiHax(words):
-    res = False
     if words.find('x') != -1:
         
         i = words.find('x')
@@ -74,13 +78,13 @@ def antiHax(words):
             
             for ch in words[i+1:j]:
                 if ch.isalpha():
-                    return False
+                    return 2
                 
-            return True #wont be executed if ch.isalpha() returns false
+            return 1 #wont be executed if ch.isalpha() returns false
         else:
-            return False
+            return 0
     else:
-        return False
+        return 0
                 
 
 bot.run (getToken())
