@@ -34,7 +34,8 @@ async def stop(ctx):
 async def on_message(ctx):
     if ctx.author != bot.user:
         words =  ctx.content.lower()
-        if words.find('xd') != -1:
+        wordlist = words.split(' ')
+        if "xd" in wordlist:
             await ctx.channel.send(xdRandom())
         elif antiHax(words) == True:
             await ctx.channel.send(xdRandom())
@@ -63,15 +64,19 @@ def xdRandom(i = 0):
         return xd
     
 def antiHax(words):
+    res = False
     if words.find('x') != -1:
+        
         i = words.find('x')
         if words[i:].find('d') != -1:
-            j = words.find('d')
+            
+            j = words[i:].find('d') + i
+            
             for ch in words[i+1:j]:
                 if ch.isalpha():
                     return False
                 
-            return True#wont be executed if ch.isalpha() returns false everytime
+            return True #wont be executed if ch.isalpha() returns false
         else:
             return False
     else:
