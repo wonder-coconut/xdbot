@@ -57,26 +57,10 @@ def xdRandom(i = 0):
         xd = xd.read()
         xd = xd.split('\n')
         return xd[i]
-    elif (i==10):
-        xd =  open('xd_text/XD2.txt')
+    else:
+        xd = open(f"xd_text/XD{i-8}.txt")
         xd = xd.read()
         return xd
-    elif (i==11):
-        xd = open('xd_text/XD3.txt')
-        xd = xd.read()
-        return xd 
-    elif (i==12):
-        xd = open('xd_text/XD4.txt')
-        xd = xd.read()
-        return xd 
-    elif (i==13):
-        xd = open('xd_text/XD5.txt')
-        xd = xd.read()
-        return xd 
-    elif (i==14):
-        xd = open('xd_text/XD6.txt')
-        xd = xd.read()
-        return xd 
     
 def antiHax(words):
     if words.find('x') != -1:
