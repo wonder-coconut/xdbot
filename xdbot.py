@@ -18,10 +18,14 @@ def getToken():
 async def on_ready():
     print('logged in as '+str(bot.user))
 
-@bot.command()
+@bot.command(name = "test")
 async def test(ctx, arg):
     i = int(arg)
     await ctx.channel.send(xdRandom(i))
+
+@bot.command(name = "stop")
+async def stop(ctx):
+    await bot.close()
 
 @bot.event
 async def on_message(ctx):
