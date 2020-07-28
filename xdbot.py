@@ -81,10 +81,16 @@ def antiHax(words):
     if words.find('x') != -1:
         i = words.find('x')
         if words[i:].find('d') != -1:
-            return True
+            j = words.find('d')
+            for ch in words[i+1:j]:
+                if ch.isalpha():
+                    return False
+                
+            return True#wont be executed if ch.isalpha() returns false everytime
         else:
             return False
     else:
         return False
+                
 
 bot.run (getToken())
