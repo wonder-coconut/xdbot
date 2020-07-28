@@ -30,9 +30,9 @@ async def stop(ctx):
 @bot.event
 async def on_message(ctx):
     if ctx.author != bot.user:
-        word =  ctx.content.lower()
-        if word.find('xd') != -1:
-            await ctx.channel.send(xdRandom())
+        words =  ctx.content.lower()
+        if words.find('xd') != -1:
+            await ctx.channel.send(f"{xdRandom()}\n{type(words)}")
         
     await bot.process_commands(ctx)
 
