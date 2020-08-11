@@ -32,7 +32,7 @@ async def stop(ctx):
 
 @bot.command(name = "ascii")
 async def ascii(ctx, arg):
-    print("command works")
+    print(arg)
 @bot.event
 async def on_message(ctx):
 
