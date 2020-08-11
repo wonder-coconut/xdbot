@@ -1,7 +1,7 @@
 art = open("ascii.txt",'r')
 arttxt = art.read().split("$")
 i = 0
-test = "abcghijkl"
+test = "fuckme"
 while(i<10):
     for ch in test:
         artchar = arttxt[ord(ch)-97]
