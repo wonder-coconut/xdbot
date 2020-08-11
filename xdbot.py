@@ -30,6 +30,9 @@ async def stop(ctx):
     print("close command detected, killing self :(")
     await bot.close()
 
+@bot.command(name = "ascii")
+async def ascii(ctx, arg):
+    print("command works")
 @bot.event
 async def on_message(ctx):
 
