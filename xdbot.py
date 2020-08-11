@@ -32,7 +32,8 @@ async def stop(ctx):
 
 @bot.command(name = "ascii")
 async def ascii(ctx, arg):
-    print(arg)
+    print(f"converting {type(arg)} to ascii")
+    
 @bot.event
 async def on_message(ctx):
 
