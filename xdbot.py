@@ -34,7 +34,7 @@ async def help(ctx):
 @bot.command(name = "test")
 async def test(ctx, arg):
     i = int(arg)
-    await ctx.channel.send(xdRandom(i))
+    await ctx.channel.send(f"> {xdRandom(i)}")
 
 #programmed consent
 @bot.command(name = "stop")
@@ -48,7 +48,7 @@ async def stop(ctx):
 async def ascii(ctx, arg):
     print(f"converting {arg} to ascii")
     try:
-        await ctx.channel.send(asciify(arg))
+        await ctx.channel.send(f"> {asciify(arg)}")
         print("converted")
     except Exception as e:
         print(e)
