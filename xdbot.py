@@ -95,5 +95,18 @@ def antiHax(words):
     else:
         return 0
                 
+def asciify(phrase):
+    art = open("ascii/ascii.txt",'r')
+    arttxt = art.read().split("$")
+    i = 0
+    while(i<10):
+        for ch in phrase:
+            artchar = arttxt[ord(ch)-97]
+            artline = artchar.split("\n")
+            print(artline[i], end="")
+        print("")
+        i = i + 1
+    print("")
 
+    
 bot.run (getToken())
