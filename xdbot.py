@@ -34,7 +34,7 @@ async def stop(ctx):
 async def ascii(ctx, arg):
     print(f"converting {arg} to ascii")
     try:
-        asciify(arg)
+        await ctx.channel.send(asciify(arg))
         print("converted")
     except:
         print("failure")
@@ -108,6 +108,7 @@ def asciify(phrase):
         str = str + "\n"
         i = i + 1
     str = str + "\n"
-    print(str)
+    str = "```" + str + "```"
+    return str
     
 bot.run (getToken())
