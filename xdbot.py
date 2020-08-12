@@ -8,6 +8,7 @@ from random import randint
 import datetime
 
 bot = commands.Bot(command_prefix='~')
+bot.remove_command('help') 
 
 def getToken():
     tokenFile = open('TOKEN.txt','r')
@@ -18,6 +19,17 @@ def getToken():
 async def on_ready():
     print('logged in as '+str(bot.user))
 
+#help command
+@bot.command(name = "help")
+async def help(ctx):
+    await ctx.channel.send(
+'''> this bot is purely to prank those mfs who use xD way too often
+   > command prefix  :   '~'
+   > commands:
+   > test    :   test out specific responses
+   > stop    :   kill the bot
+   > ascii   :   convert text to ascii art''')
+
 #testing command
 @bot.command(name = "test")
 async def test(ctx, arg):
@@ -27,6 +39,7 @@ async def test(ctx, arg):
 #programmed consent
 @bot.command(name = "stop")
 async def stop(ctx):
+    #await ctx.channel.send(deathThreat())
     print("close command detected, killing self :(")
     await bot.close()
 
