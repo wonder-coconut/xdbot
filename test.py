@@ -12,4 +12,3 @@ while(i<10):
 print("")
 
 
-#use fraktur font tomorrow

@@ -30,14 +30,15 @@ async def stop(ctx):
     print("close command detected, killing self :(")
     await bot.close()
 
+#ascii
 @bot.command(name = "ascii")
 async def ascii(ctx, arg):
     print(f"converting {arg} to ascii")
     try:
         await ctx.channel.send(asciify(arg))
         print("converted")
-    except:
-        print("failure")
+    except Exception as e:
+        print(e)
     
 @bot.event
 async def on_message(ctx):
@@ -96,13 +97,17 @@ def antiHax(words):
         return 0
                 
 def asciify(phrase):
+    phrase = phrase.lower()
     str = ""
     art = open("ascii/ascii.txt",'r')
     arttxt = art.read().split("$")
     i = 0
     while(i<10):
         for ch in phrase:
-            artchar = arttxt[ord(ch)-97]
+            if ch.isalpha():
+                artchar = arttxt[ord(ch)-97]
+            else:
+                artchar = arttxt[26]
             artline = artchar.split("\n")
             str = str + artline[i]
         str = str + "\n"
