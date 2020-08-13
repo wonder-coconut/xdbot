@@ -40,11 +40,10 @@ async def test(ctx, arg):
 @bot.command(name = "stop")
 async def stop(ctx):
     if await ctx.bot.is_owner(ctx.author):
-        #await ctx.channel.send(deathThreat())
         print("close command detected, killing self :(")
         await bot.close()
     else:
-        death(ctx)
+        await ctx.channel.send(death())
 
 #ascii
 @bot.command(name = "ascii")
@@ -135,16 +134,15 @@ def asciify(phrase):
     return str
 
 #death threats
-async def death(ctx):
+def death():
         time = datetime.datetime.now()
         mic = time.microsecond
         seed(mic)
-        i = randint(1,11)
-        if i == 11:
-            await ctx.channel.send(file = discord.File('death/death.gif'))
-        else:
-            deathfile = open("death.txt",'r')
-            deathtext = deathfile.read().split('\n')
-            await ctx.channel.send(deathtext[i-1])
+        i = randint(0,9)
+        
+        death = open("death/death.txt",'r')
+        death = death.read().split('\n')
+        return death[i]
+        
 
 bot.run (getToken())
