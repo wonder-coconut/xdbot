@@ -39,9 +39,12 @@ async def test(ctx, arg):
 #programmed consent
 @bot.command(name = "stop")
 async def stop(ctx):
-    #await ctx.channel.send(deathThreat())
-    print("close command detected, killing self :(")
-    await bot.close()
+    if await ctx.bot.is_owner(ctx.author):
+        #await ctx.channel.send(deathThreat())
+        print("close command detected, killing self :(")
+        await bot.close()
+    else:
+        death(ctx)
 
 #ascii
 @bot.command(name = "ascii")
@@ -90,7 +93,8 @@ def xdRandom(i = 0):
         xd = open(f"xd_text/XD{i-8}.txt")
         xd = xd.read()
         return xd
-    
+
+#antihax
 def antiHax(words):
     if words.find('x') != -1:
         
@@ -108,7 +112,8 @@ def antiHax(words):
             return 0
     else:
         return 0
-                
+
+#ascii converter            
 def asciify(phrase):
     phrase = phrase.lower()
     str = ""
@@ -128,5 +133,18 @@ def asciify(phrase):
     str = str + "\n"
     str = "```" + str + "```"
     return str
-    
+
+#death threats
+async def death(ctx):
+        time = datetime.datetime.now()
+        mic = time.microsecond
+        seed(mic)
+        i = randint(1,11)
+        if i == 11:
+            await ctx.channel.send(file = discord.File('death/death.gif'))
+        else:
+            deathfile = open("death.txt",'r')
+            deathtext = deathfile.read().split('\n')
+            await ctx.channel.send(deathtext[i-1])
+
 bot.run (getToken())
