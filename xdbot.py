@@ -58,8 +58,10 @@ async def ascii(ctx, arg):
 
 @bot.command(name = "roleme")
 async def roleme(ctx):
+    server = ctx.guild
+    await server.create_role(name="Bitchboy",colour=discord.Colour(0x00FFFF))
     user = ctx.message.author
-    role = discord.utils.get(ctx.guild.roles, name = "Test")
+    role = discord.utils.get(ctx.guild.roles, name = "Bitchboy")
     await user.add_roles(role)
 
 @bot.event
