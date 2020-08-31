@@ -1,6 +1,7 @@
 
 import discord
 from discord.ext import commands
+from discord.utils import get
 
 from random import seed
 from random import randint
@@ -54,7 +55,13 @@ async def ascii(ctx, arg):
         print("converted")
     except Exception as e:
         print(e)
-    
+
+@bot.command(name = "roleme")
+async def roleme(ctx):
+    user = ctx.message.author
+    role = discord.utils.get(ctx.guild.roles, name = "Test")
+    await user.add_roles(role)
+
 @bot.event
 async def on_message(ctx):
 
